@@ -40,8 +40,6 @@ static const CGFloat VENTokenFieldDefaultMaxHeight          = 150.0;
 @property (strong, nonatomic) NSMutableArray *tokens;
 @property (assign, nonatomic) CGFloat originalHeight;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
-@property (strong, nonatomic) VENBackspaceTextField *invisibleTextField;
-@property (strong, nonatomic) VENBackspaceTextField *inputTextField;
 @property (strong, nonatomic) UIColor *colorScheme;
 @property (strong, nonatomic) UILabel *collapsedLabel;
 
@@ -111,6 +109,12 @@ static const CGFloat VENTokenFieldDefaultMaxHeight          = 150.0;
 - (void)collapse
 {
     [self layoutCollapsedLabel];
+}
+
+- (void)setKeyboardAppearanceType:(UIKeyboardAppearance)keyboardAppearanceType
+{
+    self.invisibleTextField.keyboardAppearance = keyboardAppearanceType;
+    self.inputTextField.keyboardAppearance = keyboardAppearanceType;
 }
 
 - (void)reloadData
