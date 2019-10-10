@@ -42,10 +42,12 @@
 
 - (void)setUpInit
 {
-    self.backgroundView.layer.cornerRadius = 5;
+    self.backgroundView.layer.cornerRadius = 18.5;
+    self.backgroundView.frame = CGRectMake(0, 0, 135, 37);
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapToken:)];
     self.colorScheme = [UIColor blueColor];
     self.titleLabel.textColor = self.colorScheme;
+    self.titleLabel.font = [UIFont fontWithName:@"Gellix-Medium" size:17];
     [self addGestureRecognizer:self.tapGestureRecognizer];
 }
 
@@ -53,9 +55,11 @@
 {
     self.titleLabel.text = text;
     self.titleLabel.textColor = self.colorScheme;
+    self.titleLabel.font = [UIFont fontWithName:@"Gellix-Medium" size:17];
     [self.titleLabel sizeToFit];
-    self.frame = CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(self.frame), CGRectGetMaxX(self.titleLabel.frame) + 3, CGRectGetHeight(self.frame));
+    self.frame = CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(self.frame), CGRectGetMaxX(self.titleLabel.frame), CGRectGetHeight(self.frame));
     [self.titleLabel sizeToFit];
+    self.titleLabel.frame = CGRectOffset(self.titleLabel.frame, 5, 0);
 }
 
 - (void)setHighlighted:(BOOL)highlighted
@@ -64,6 +68,7 @@
     UIColor *textColor = highlighted ? [UIColor whiteColor] : self.colorScheme;
     UIColor *backgroundColor = highlighted ? self.colorScheme : [UIColor clearColor];
     self.titleLabel.textColor = textColor;
+    self.titleLabel.font = [UIFont fontWithName:@"Gellix-Medium" size:17];
     self.backgroundView.backgroundColor = backgroundColor;
 }
 
